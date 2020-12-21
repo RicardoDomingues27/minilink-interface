@@ -1,0 +1,90 @@
+*{
+    font-family: 'Segoe UI';
+    font-size: 18px;
+    margin:0;
+    padding: 0;
+}
+.main{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    
+}
+.container{
+    overflow: hidden;
+    display:flex;
+    flex-direction: column;
+    margin-top: 50px;
+    max-width: 450px;
+    width: 90%;
+    height: auto;
+    border-radius: 5px;
+    border:solid 1px #aaa;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    animation: fadein 3s; /* Padrão */
+    -webkit-animation: fadein 3s; /* Webkit */
+    -moz-animation: fadein 3s; /* Firefox */
+    -ms-animation: fadein 3s; /* IE */
+}
+.title-box{
+    background-color:#2196f3;
+    font-weight: 500;
+    color: #fff;
+
+}
+.container .form-linha {
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items:center;
+    padding-right: 5px;
+    padding-left:  5px;
+    
+}
+.form-linha label{
+    min-width: 70px;
+}
+.inputText{
+    width:60%;
+    height: 30px;
+    border-radius: 5px;
+    border: solid 1px #ccc;
+
+}
+.button {
+    min-width: 100px;
+    min-height: 30px;
+    width: 50%;
+    height: 70%;
+    color: #fff;
+    background: #2196f3;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.button:hover{
+    box-shadow: 0px 0px 0px #fff;
+    color:#ddd;
+}
+
+@keyframes fadein {
+from { opacity: 0.1; }
+to { opacity: 1; } /* Padrão */
+}
+@-moz-keyframes fadein {
+from { opacity: 0.1; }
+to { opacity: 1; } /* Firefox */
+}
+@-webkit-keyframes fadein {
+from { opacity: 0.1; 
+to { opacity: 1; } /* Webkit */
+}
+@-ms-keyframes fadein {
+from { opacity: 0.1; }
+to { opacity: 1; } /* IE */
+}​

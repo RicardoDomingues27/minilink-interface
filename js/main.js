@@ -9,7 +9,7 @@ formCadastrarLink.addEventListener('submit', event =>{
     const minilink = event.target.querySelector("[data-minilink]").value;
     
     cadastrarMiniLink(url,minilink).then(exibe =>{
-        showResponse(exibe.id_link,url,minilink);
+        showResponse(exibe.id_link,normalizedURL(url),minilink);
         
     })
 })
@@ -62,3 +62,10 @@ function showResponse(id ,url,minilink){
         dataMain.appendChild(linha);
 }
 
+function normalizedURL(url){
+    
+    if(url.indexOf('http') <0){
+        return 'https://'+url;
+    }
+    return '';
+}

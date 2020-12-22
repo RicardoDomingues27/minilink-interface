@@ -1,6 +1,8 @@
 const urlApi = "http://192.168.1.40:8080";
-const formCadastrarLink = document.querySelector('[data-form]')
-
+const formCadastrarLink = document.querySelector('[data-form]');
+const getLinks = document.querySelector('[data-links');
+const getHome = document.querySelector('data-home');
+const dataMain = document.querySelector('[data-main]');
 
 formCadastrarLink.addEventListener('submit', event =>{
     event.preventDefault();
@@ -13,6 +15,31 @@ formCadastrarLink.addEventListener('submit', event =>{
         
     })
 })
+
+const listarLinks =  () =>{
+    return fetch(urlApi+'/links').then(response=>{
+        return response.json();
+    }).then(json=>{
+        return json;
+    })
+    
+}
+
+getLinks.addEventListener('click', event=>{
+
+    event.preventDefault();
+    dataMain.innerHTML = '';
+    const tableLinks = document.createElement('div');
+    listarLinks().then(exibe=>{
+        if(exibe.response.length >1 ){
+            const linha = document.createElement('div');
+            exibe.response.forEach(indice=>{
+                showResponse(indice.id_link,indice.url,indice.minilink);
+            })
+        }
+    })
+})
+
 
 const cadastrarMiniLink = (url,minilink)=>{
     const json = JSON.stringify({
@@ -40,7 +67,7 @@ const cadastrarMiniLink = (url,minilink)=>{
 }
 
 function showResponse(id ,url,minilink){
-    const dataMain = document.querySelector('[data-main]');
+    
     const conteudoLinha =         
             `  
                 <div class="form-linha">

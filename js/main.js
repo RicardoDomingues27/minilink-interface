@@ -1,6 +1,6 @@
 const urlApi = "http://192.168.1.40:8080";
 const formCadastrarLink = document.querySelector('[data-form]')
-const dataMain = document.querySelector('[data-main]')
+
 
 formCadastrarLink.addEventListener('submit', event =>{
     event.preventDefault();
@@ -9,26 +9,8 @@ formCadastrarLink.addEventListener('submit', event =>{
     const minilink = event.target.querySelector("[data-minilink]").value;
     
     cadastrarMiniLink(url,minilink).then(exibe =>{
+        showResponse(exibe.id_link,url,minilink);
         
-        const conteudoLinha =         
-            `  
-                <div class="form-linha">
-                    Link Cadastrado com sucesso
-                </div>  
-                <div class="form-linha">
-                    ID: ${exibe.id_link}
-                </div>
-                <div class="form-linha">
-                    URL: ${url}
-                </div>
-                <div class="form-linha">
-                    MiniLink: ${minilink}
-                </div>
-               `;
-        const linha = document.createElement('div');
-        linha.className = "container";
-        linha.innerHTML = conteudoLinha;
-        dataMain.appendChild(linha);
     })
 })
 
@@ -49,9 +31,6 @@ const cadastrarMiniLink = (url,minilink)=>{
         if(response.ok){
             message = "Mini Link cadastrado com sucesso";
         }
-        alert(message);
-
-        
         return response.json();
     }).catch( error =>{
         alert("Error: "+error);
@@ -59,9 +38,27 @@ const cadastrarMiniLink = (url,minilink)=>{
         return error;
     })
 }
-function validarCampoVazio(campo){
-    if(campo.value !== null){
-        return campo.value;
-    }
+
+function showResponse(id ,url,minilink){
+    const dataMain = document.querySelector('[data-main]');
+    const conteudoLinha =         
+            `  
+                <div class="form-linha">
+                    Link Cadastrado com sucesso
+                </div>  
+                <div class="form-linha">
+                    ID: ${id}
+                </div>
+                <div class="form-linha">
+                    URL: ${url}
+                </div>
+                <div class="form-linha">
+                    MiniLink: ${minilink}
+                </div>
+               `;
+        const linha = document.createElement('div');
+        linha.className = "container";
+        linha.innerHTML = conteudoLinha;
+        dataMain.appendChild(linha);
 }
 

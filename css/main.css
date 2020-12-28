@@ -3,12 +3,13 @@
     font-size: 18px;
     margin:0;
     padding: 0;
+
 }
 .menuMobile{
     background-image: url(menuMobile.png);
     min-width: 50px !important;
     height: 50px;
-    display: none;
+    display: none !important;
     background-size: 100% auto;
     background-repeat: inherit;
 }
@@ -19,12 +20,14 @@
     align-items: center;
     align-content: center;
     height: 50px;
-    background: #333;
+    background: #172f41;
     color: #fff;
 }
 .header div{
     min-width: 70px;
     max-width: 130px;
+    display: flex;
+    justify-content: center;
 }
 .header div:hover{
     height: 100%;
@@ -47,7 +50,7 @@
     overflow: hidden;
     display:flex;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 10px;
     max-width: 450px;
     width: 90%;
     height: auto;
@@ -60,9 +63,13 @@
     -ms-animation: fadein 3s; /* IE */
 }
 .title-box{
-    background-color:#2196f3;
+    background-color:#2b3e4b;
     font-weight: 500;
     color: #fff;
+
+}
+.title-box label{
+    color: #fff !important;
 
 }
 .container .form-linha {
@@ -74,9 +81,11 @@
     padding-right: 5px;
     padding-left:  5px;
     
+    
 }
 .form-linha label{
     min-width: 70px;
+    color: #353535;
 }
 .inputText{
     width:60%;
@@ -87,11 +96,11 @@
 }
 .button {
     min-width: 100px;
-    min-height: 30px;
-    width: 50%;
+    min-height: 40px;
+    width: 32%;
     height: 70%;
     color: #fff;
-    background: #2196f3;
+    background: #e67e22;
     border: 0;
     border-radius: 2px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
@@ -105,11 +114,11 @@
         justify-content: start;
     }
     .header div{
-        display:none;
+        display:none ;
         
     }
     .header .menuMobile{
-        display:block;
+        display:flex !important;
     }
 }
 

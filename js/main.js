@@ -1,20 +1,9 @@
 const urlApi = "http://192.168.1.40:8080";
-const formCadastrarLink = document.querySelector('[data-form]');
+
 const getLinks = document.querySelector('[data-links');
-const getHome = document.querySelector('data-home');
+const getHome = document.querySelector('[data-home]');
 const dataMain = document.querySelector('[data-main]');
 
-formCadastrarLink.addEventListener('submit', event =>{
-    event.preventDefault();
-
-    const url = event.target.querySelector('[data-url]').value;
-    const minilink = event.target.querySelector("[data-minilink]").value;
-    
-    cadastrarMiniLink(url,minilink).then(exibe =>{
-        showResponse(exibe.id_link,normalizedURL(url),minilink);
-        
-    })
-})
 
 const listarLinks =  () =>{
     return fetch(urlApi+'/links').then(response=>{
@@ -27,7 +16,6 @@ const listarLinks =  () =>{
 
 getLinks.addEventListener('click', event=>{
 
-    event.preventDefault();
     dataMain.innerHTML = '';
     const tableLinks = document.createElement('div');
     listarLinks().then(exibe=>{
@@ -39,41 +27,35 @@ getLinks.addEventListener('click', event=>{
         }
     })
 })
+getHome.addEventListener('click', event=>{
+    event.preventDefault();
 
-
-const cadastrarMiniLink = (url,minilink)=>{
-    const json = JSON.stringify({
-        nome: 'Novo Link', 
-        url: url,
-        minilink: minilink
+    getPage('home.html', 'js/home.js');
+    
         
-    })
-
-    return fetch(urlApi+'/links', {
-        method: 'POST',
-        headers:{"Content-Type": "application/json"},
-        body: json
-    }).then( response =>{
-        let message = "Error ".concat(response.status);
-        if(response.ok){
-            message = "Mini Link cadastrado com sucesso";
-        }
-        return response.json();
-    }).catch( error =>{
-        alert("Error: "+error);
-        console.log(error);
-        return error;
+})
+function getPage(pageFile, scritpFile){
+    fetch(pageFile)
+    .then(res => res.text())
+    .then(text =>  {
+        dataMain.innerHTML=text;
+        if(scritpFile !== null){
+            getScript(scritpFile);
+        }     
     })
 }
+function getScript(scriptFile){
+        var script = document.createElement('script');
+        script.src = scriptFile;
+        dataMain.appendChild(script);
+}
+
+
 
 function showResponse(id ,url,minilink){
     
     const conteudoLinha =         
-            `  
-                <div class="form-linha">
-                    Link Cadastrado com sucesso
-                </div>  
-                <div class="form-linha">
+            `   <div class="form-linha title-box">
                     ID: ${id}
                 </div>
                 <div class="form-linha">

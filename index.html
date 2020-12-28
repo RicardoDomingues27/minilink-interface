@@ -6,40 +6,28 @@
     <title>Mini Link</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <link rel="shortcut icon" href="favicon.ico" />
     
 </head>
 <body>
     <div class="header">
         <div class="menuMobile"></div>
-        <div>Home</div>
+        <div data-home>Home</div>
         <div data-links>Links </div>
-        <div>Cadastrar Link</div>
+        
     </div>
 <div data-main class="main">
-    <form data-form class="container">
-        
-            <div class="form-linha title-box">
-                <label>Cadastro de Link</label>
-            </div>
-            <div class="form-linha">
-                <label >URL:</label>
-                <input type="text" data-url required class="inputText" />
-            </div>
-            <div class="form-linha">
-                <label>MiniLink:</label>
-                <input type="text" data-minilink required class="inputText" />
-            </div>
-            <div class="form-linha">
-                <button class="button" type="submit">Cadastrar</button>
-
-            </div>
-
-        
-    </form>
+   
  
 
 </div>    
     
 </body>
-<script src='js/main.js'></script>
+<script src='js/main.js'> </script>
+
+
+<script>
+    getPage('home.html', 'js/home.js');
+   
+</script>
 </html>
